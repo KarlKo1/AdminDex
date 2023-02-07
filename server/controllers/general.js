@@ -6,6 +6,7 @@ export const getUser = async (req, res) => {
     const user = await User.findById(id);
     res.status(200).json(user);
   } catch (error) {
+    //In real app handle errors specifically
     res.status(404).json({ message: error.message });
   }
 };
