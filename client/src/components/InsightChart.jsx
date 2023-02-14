@@ -109,7 +109,7 @@ const InsightChart = ({ isDashboard = false }) => {
               {
                 on: "hover",
                 style: {
-                  itemTextColor: theme.palette.primary[500],
+                  itemTextColor: theme.palette.secondary[100],
                 },
               },
             ],

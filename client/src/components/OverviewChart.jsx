@@ -9,6 +9,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
 
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
     if (!data) return [];
+
     const { monthlyData } = data;
     const totalSalesLine = {
       id: "totalSales",
@@ -20,10 +21,12 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       color: theme.palette.secondary[600],
       data: [],
     };
+
     Object.values(monthlyData).reduce(
       (acc, { month, totalSales, totalUnits }) => {
         const curSales = acc.sales + totalSales;
         const curUnits = acc.units + totalUnits;
+
         totalSalesLine.data = [
           ...totalSalesLine.data,
           { x: month, y: curSales },
@@ -32,15 +35,17 @@ const OverviewChart = ({ isDashboard = false, view }) => {
           ...totalUnitsLine.data,
           { x: month, y: curUnits },
         ];
+
         return { sales: curSales, units: curUnits };
       },
       { sales: 0, units: 0 }
     );
-    return [[totalSalesLine], [totalUnitsLine]];
-    // eslint-disable-next-line
-  }, [data]);
 
-  if (isLoading || !data) return "Loading...";
+    return [[totalSalesLine], [totalUnitsLine]];
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!data || isLoading) return "Loading...";
+
   return (
     <ResponsiveLine
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
@@ -88,6 +93,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       }}
       yFormat=" >-.2f"
       curve="catmullRom"
+      enableArea={isDashboard}
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -105,6 +111,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       }}
       axisLeft={{
         orient: "left",
+        tickValues: 5,
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
