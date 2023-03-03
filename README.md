@@ -4,8 +4,7 @@ This application was done as a learning project.
 For frontend, Material UI, Material UI Data Grid, Nivo Charts, Redux Toolkit and Redux Toolkit Query was used.
 For backend Node JS, Express Js, Mongoose, and MongoDB.
 Also aggregate calls in MongoDB were used in this project.
-
-This project was finised following EdRoh tutorials.
+Following project was finised by doing EdRoh tutorials.
 
 ## Available Scripts
 
