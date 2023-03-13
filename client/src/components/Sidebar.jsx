@@ -137,7 +137,7 @@ const Sidebar = ({
                   </Typography>
                 </Box>
                 {!isNonMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                  <IconButton onClick={() => setIsSidebarOpen(isSidebarOpen)}>
                     <ChevronLeft />
                   </IconButton>
                 )}
@@ -193,7 +193,7 @@ const Sidebar = ({
               })}
             </List>
           </Box>
-          <Box position="absolute" bottom="2rem">
+          <Box>
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
@@ -220,9 +220,6 @@ const Sidebar = ({
                   {user.occupation}
                 </Typography>
               </Box>
-              <SettingsOutlined
-                sx={{ color: theme.palette.secondary[300], fontSize: "24px" }}
-              />
             </FlexBetween>
           </Box>
         </Drawer>
